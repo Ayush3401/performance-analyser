@@ -1,0 +1,17 @@
+.nav-item{
+    display:flex;
+    align-items: center;
+    min-height: 2em;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-item:hover{
+    background-color:#107eff;
+    color: white;
+}
+
+.active{
+    background-color: #107eff;
+    color: white;
+}
