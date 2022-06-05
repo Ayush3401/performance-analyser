@@ -21,7 +21,7 @@ function App() {
       });
       setLoading(false);
       setData(result.data);
-      console.log(result.data);
+      console.log(result);
     } catch (error) {
       setError(true);
       console.log(error);
@@ -38,7 +38,7 @@ function App() {
             <h1>Loading...</h1>
           )
         ) : (
-          <Layout />
+          <Layout data={data}/>
         )
       ) : (
         <Form onFormSubmit={onFormSubmit} />
