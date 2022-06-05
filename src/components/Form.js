@@ -1,16 +1,21 @@
+import "../styles/Form.css";
+import { useState } from "react";
 
-import '../styles/Form.css';
+function Form({ onFormSubmit }) {
+  const [url, setUrl] = useState("");
 
-function Form({onFormSubmit}) {
-  
-  function handleUrlSubmit(e){
+  function handleUrlSubmit(e) {
     e.preventDefault();
-    onFormSubmit(true)
+    onFormSubmit(url);
   }
 
   return (
-    <div className='url-form'>
-      <input type="text" placeholder="Enter complete url e.g.('https://example.com')" />
+    <div className="url-form">
+      <input
+        type="text"
+        placeholder="Enter complete url e.g.('https://example.com')"
+        onChange={(e) => setUrl(e.target.value)}
+      />
       <button onClick={handleUrlSubmit}>Submit</button>
     </div>
   );

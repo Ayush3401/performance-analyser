@@ -1,35 +1,35 @@
 .url-form{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .url-form input{
-    box-sizing: border-box;
-    width: 25em;
-    height: 2em;
-    border: none;
-    border-bottom: 1px solid gray;
-    font-size: larger;
-    margin-bottom: 1em;
-  }
-  
-  .url-form input:focus{
-    outline: none;
-  }
-  
-  .url-form button{
-    font-size: larger;
-    background-color:cadetblue;
-    color: aliceblue;
-    width: 10em;
-    height: 2em;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.url-form input{
+  box-sizing: border-box;
+  width: 25em;
+  height: 2em;
+  border: none;
+  border-bottom: 1px solid gray;
+  font-size: larger;
+  margin-bottom: 1em;
+}
+
+.url-form input:focus{
+  outline: none;
+}
+
+.url-form button{
+  font-size: larger;
+  background-color:cadetblue;
+  color: aliceblue;
+  width: 10em;
+  height: 2em;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
   
   
   
