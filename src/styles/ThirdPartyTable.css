@@ -1,0 +1,12 @@
+select{
+    outline: none;
+    border: 1px solid #107eff;
+    width: 10em;
+    height: 2em;
+    align-self:flex-start;
+    margin: 1em;
+}
+
+select:focus{
+    outline: none;
+}
