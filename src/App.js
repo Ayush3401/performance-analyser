@@ -38,7 +38,7 @@ function App() {
             <h1>Loading...</h1>
           )
         ) : (
-          <Layout />
+          <Layout data={data} />
         )
       ) : (
         <Form onFormSubmit={onFormSubmit} />

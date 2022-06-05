@@ -1,9 +1,12 @@
 import Navigation from "./Navigation";
+import ThirdPartySummary from "./ThirdPartySummary";
 
-function Layout() {
+
+function Layout({ data }) {
   return (
     <>
-    <Navigation />
+      <Navigation />
+      <ThirdPartySummary data={data} />
     </>
   );
 }
