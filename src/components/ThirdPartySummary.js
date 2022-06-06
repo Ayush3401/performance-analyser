@@ -61,15 +61,13 @@ function extractBlockingTime(data) {
 
 
 function ThirdPartySummary({ data }) {
-  const thirdPartyData = data['third-party-summary'];
-  const details = thirdPartyData.details;
+  const details = data.details;
   const mainThreadTimeData = extractMainThreadTime(details);
   const blockingTimeData = extractBlockingTime(details);
 
   return (
     <>
       <div className="third-party-container">
-        <h1>Third Party Summary</h1>
         <DoughnutGraph title={"Main Thread Time Data"} data={mainThreadTimeData}></DoughnutGraph>
         <PieChart title={"Blocking Time Data"} data={blockingTimeData}></PieChart>
       </div>

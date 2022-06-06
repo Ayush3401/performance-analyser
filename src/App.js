@@ -21,7 +21,7 @@ function App() {
       });
       setLoading(false);
       setData(result.data);
-      console.log(result.data);
+      console.log(result);
     } catch (error) {
       setError(true);
       console.log(error);

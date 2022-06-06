@@ -1,13 +1,14 @@
 .nav-item{
     display:flex;
     align-items: center;
-    min-height: 2em;
+    height: 3em;
     justify-content: center;
-    width: 100%;
+    min-width: 20em;
+    text-transform: capitalize;
 }
-.nav-item:hover{
-    background-color:#107eff;
-    color: white;
+
+.nav-item:hover:not(.active){
+    background-color:#7cb7fb;
 }
 
 .active{
