@@ -56,3 +56,20 @@ input{
 input:focus{
     outline: none;
 }
+
+.toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button{
+    font-size: larger;
+    background-color:cadetblue;
+    color: aliceblue;
+    width: 10em;
+    height: 2em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
