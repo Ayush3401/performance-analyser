@@ -36,13 +36,13 @@ function ThirdPartyTable({ id, headings, items }) {
   }
 
   return (
-    <>
+    <div className="third-party-wrapper">
       <select value={view} onChange={changeView}>
         <option value="entity">Entity View</option>
         <option value="script">Script View</option>
       </select>
       <Table id={id} headings={thirdPartyHeadings} items={thirdPartyItems} />
-    </>
+    </div>
   );
 }
 

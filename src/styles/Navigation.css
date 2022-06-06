@@ -1,5 +1,5 @@
 .nav{
     width: 20em;
     background-color: gainsboro;
-    min-height:100vh;
+    min-height:calc(100vh - 16px);
 }

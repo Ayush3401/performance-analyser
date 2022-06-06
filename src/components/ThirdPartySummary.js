@@ -8,7 +8,7 @@ function extractMainThreadTime(data) {
     const subItemData = item.subItems.items.map(subitem => {
       return {
         url: subitem.url,
-        data: (subitem.mainThreadTime == undefined) ? 0 : subitem.mainThreadTime
+        data: (subitem.mainThreadTime === undefined) ? 0 : subitem.mainThreadTime
       }
     })
     return subItemData;
@@ -36,7 +36,7 @@ function extractBlockingTime(data) {
     const subItemData = item.subItems.items.map(subitem => {
       return {
         url: subitem.url,
-        data: (subitem.blockingTime == undefined) ? 0 : subitem.blockingTime
+        data: (subitem.blockingTime === undefined) ? 0 : subitem.blockingTime
       }
     })
     return subItemData;
@@ -66,12 +66,10 @@ function ThirdPartySummary({ data }) {
   const blockingTimeData = extractBlockingTime(details);
 
   return (
-    <>
       <div className="third-party-container">
         <DoughnutGraph title={"Main Thread Time Data"} data={mainThreadTimeData}></DoughnutGraph>
         <PieChart title={"Blocking Time Data"} data={blockingTimeData}></PieChart>
       </div>
-    </>
   )
 }
 

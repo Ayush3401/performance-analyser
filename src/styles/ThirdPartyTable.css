@@ -10,3 +10,8 @@ select{
 select:focus{
     outline: none;
 }
+
+.third-party-wrapper{
+    width:100%;
+    height: 100%;
+}
