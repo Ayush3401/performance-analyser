@@ -33,7 +33,7 @@ function processChart(data, title) {
   for (var i = 0; i < length; i++) {
     bgColor.push(generateRandomBackgroundColors());
   }
-  const labels = data.map(item => minify(item.url));
+  const labels = data.map(item => item.url);
   const values = data.map(item => round(item.data));
   const datasets = [
     {
@@ -52,6 +52,7 @@ function processChart(data, title) {
       hoverOffset: 4
     },
     options: {
+      responsive: true,
       plugins: {
         legend: {
           display: true,
@@ -59,7 +60,7 @@ function processChart(data, title) {
           generateLabels: (chart) => {
             const datasets = chart.data.datasets;
             return datasets[0].data.map((data, i) => ({
-              text: `${chart.data.labels[i]} ${data}`,
+              text: minify(chart.data.labels[i]) + `${data}`,
               fillStyle: datasets[0].backgroundColor[i],
             }))
           }
