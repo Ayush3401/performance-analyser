@@ -1,5 +1,6 @@
 import "../styles/ThirdPartySummary.css";
-import PieChart from "./ThirdParty/PieChart";
+import DoughnutGraph from "./Graphs/DoughnutGraph";
+import PieChart from "./Graphs/PieChart";
 
 
 function extractMainThreadTime(data) {
@@ -69,7 +70,7 @@ function ThirdPartySummary({ data }) {
     <>
       <div className="third-party-container">
         <h1>Third Party Summary</h1>
-        <PieChart title={"Main Thread Time Data"} data={mainThreadTimeData}></PieChart>
+        <DoughnutGraph title={"Main Thread Time Data"} data={mainThreadTimeData}></DoughnutGraph>
         <PieChart title={"Blocking Time Data"} data={blockingTimeData}></PieChart>
       </div>
     </>

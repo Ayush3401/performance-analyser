@@ -1,14 +1,6 @@
-import { Chart, registerables } from 'chart.js';
-import { useEffect } from "react";
-
-Chart.register(...registerables);
-
 function round(value) {
   return Math.round(value * 100) / 100;
 }
-
-
-
 
 function generateRandomBackgroundColors() {
   var x = Math.floor(Math.random() * 256);
@@ -27,7 +19,7 @@ function minify(label) {
 }
 
 
-function processChart(data, title) {
+function processChart(data, title, type) {
   const length = data.length;
   const bgColor = []
   for (var i = 0; i < length; i++) {
@@ -45,7 +37,7 @@ function processChart(data, title) {
   ]
 
   data = {
-    type: 'pie',
+    type: type,
     data: {
       labels,
       datasets,
@@ -72,20 +64,5 @@ function processChart(data, title) {
 
 }
 
+module.exports = { processChart };
 
-
-function PieChart({ data, title }) {
-  useEffect(() => {
-    const cfg = processChart(data, title);
-    const canvas = document.getElementById('mychart' + title);
-    const chart = new Chart(canvas.getContext('2d'), cfg);
-    return () => chart.destroy();
-  }, [data, title]);
-  return (
-    <>
-      <h1>{title}</h1>
-      <canvas id={"mychart" + title} width={"500"} height={"500"}></canvas>
-    </>)
-}
-
-export default PieChart;
