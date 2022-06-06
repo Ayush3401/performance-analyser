@@ -26,7 +26,7 @@ table tbody tr {
 }
 
 table thead tr td , table tbody tr td{
-  max-width: 30em;
+  max-width: 10em;
   word-break: break-all;
   white-space: nowrap;
   overflow: hidden;

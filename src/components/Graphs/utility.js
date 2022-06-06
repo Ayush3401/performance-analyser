@@ -46,9 +46,26 @@ function processChart(data, title, type) {
     options: {
       responsive: true,
       plugins: {
+        title: {
+          display: true,
+          text: title,
+          position: 'bottom'
+        },
         legend: {
           display: true,
           position: 'right',
+          align: 'center',
+          title: {
+            display: true,
+            text: 'Legend',
+            font: {
+              size: 16,
+              weight: 'bold'
+            }
+
+
+
+          },
           generateLabels: (chart) => {
             const datasets = chart.data.datasets;
             return datasets[0].data.map((data, i) => ({
