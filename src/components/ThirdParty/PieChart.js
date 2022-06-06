@@ -1,8 +1,7 @@
-import { Pie } from "react-chartjs-2";
-import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-Chart.register(ArcElement, Tooltip, Legend);
-Chart.register(ChartDataLabels);
+import { Chart, registerables } from 'chart.js';
+import { useEffect } from "react";
+
+Chart.register(...registerables);
 
 function round(value) {
   return Math.round(value * 100) / 100;
@@ -19,6 +18,14 @@ function generateRandomBackgroundColors() {
   return bgColor;
 }
 
+function minify(label) {
+  const MAX_LENGTH = 40;
+  if (label.length > MAX_LENGTH) {
+    return label.substring(0, 15) + "..." + label.slice(-10);
+  }
+  return label;
+}
+
 
 function processChart(data, title) {
   const length = data.length;
@@ -26,10 +33,8 @@ function processChart(data, title) {
   for (var i = 0; i < length; i++) {
     bgColor.push(generateRandomBackgroundColors());
   }
-  const labels = data.map(item => item.url);
+  const labels = data.map(item => minify(item.url));
   const values = data.map(item => round(item.data));
-  const customLabels = labels.map((label, index) => `${label}: ${round(values[index])}`)
-  console.log(customLabels);
   const datasets = [
     {
       label: title,
@@ -40,8 +45,27 @@ function processChart(data, title) {
   ]
 
   data = {
-    customLabels,
-    datasets
+    type: 'pie',
+    data: {
+      labels,
+      datasets,
+      hoverOffset: 4
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: true,
+          position: 'right',
+          generateLabels: (chart) => {
+            const datasets = chart.data.datasets;
+            return datasets[0].data.map((data, i) => ({
+              text: `${chart.data.labels[i]} ${data}`,
+              fillStyle: datasets[0].backgroundColor[i],
+            }))
+          }
+        }
+      }
+    }
   }
   return data;
 
@@ -50,33 +74,16 @@ function processChart(data, title) {
 
 
 function PieChart({ data, title }) {
-  const chartData = processChart(data, title);
-  const options = {
-    legend: {
-      display: true,
-      position: "top"
-    },
-    plugins: {
-      datalabels: {
-        color: 'black',
-        labels: {
-          title: {
-            font: {
-              weight: 'bold',
-              padding: "20px"
-            },
-          },
-          value: {
-            color: 'green'
-          }
-        }
-      }
-    }
-  }
+  useEffect(() => {
+    const cfg = processChart(data, title);
+    const canvas = document.getElementById('mychart' + title);
+    const chart = new Chart(canvas.getContext('2d'), cfg);
+    return () => chart.destroy();
+  }, [data, title]);
   return (
     <>
       <h1>{title}</h1>
-      <Pie height={"400px"} width={"400px"} data={chartData} plugins={[ChartDataLabels, Legend]} options={options} />
+      <canvas id={"mychart" + title} width={"500"} height={"500"}></canvas>
     </>)
 }
 
